@@ -24,7 +24,7 @@ class simplex_vertex:
         return list(s);
 
     def new_collab(self,nodes,size):
-        el = random.sample(nodes,size-1);
+        el = random.sample(nodes,int(size-1));
         el.append(self.name);
         self.memory.append(frozenset(el));
         return list(el);
@@ -92,7 +92,7 @@ def memory_instant_graph(vertex_dict,k,mode='simplicial',alpha=1):
                 if np.random.rand() <= memory_factor:
                     nodes = vertex_dict.keys();
                     nodes.remove(n)
-                    neigh = random.sample(nodes,m[n]);
+                    neigh = random.sample(nodes,int(m[n]));
                     vertex_dict[n].new_collab(neigh,len(neigh));
                     for nn in neigh:
                         new_history.append([n,nn]);
@@ -142,7 +142,7 @@ def memoryless_instant_graph(vertex_dict,k,mode):
             if np.random.rand()<=vertex_dict[n].act:
                 nodes = list(vertex_dict.keys());
                 nodes.remove(n)
-                neigh = random.sample(nodes,m[n]);
+                neigh = random.sample(nodes,int(m[n]));
                 for nn in neigh:
                     vertex_dict[n].new_edge(nn);
                     new_history.append([n,nn]);
