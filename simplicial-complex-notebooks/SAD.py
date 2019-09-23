@@ -206,10 +206,10 @@ def invert_k(M):
 
 def onion_decomposition(G):
     neigh = {}
-    for n in G.nodes():
+    for n in list(G.nodes()):
         neigh[n] = G.neighbors(n);
     nodes = G.nodes();
-    D = G.degree();
+    D = dict(G.degree());
     coreness = {}
     layerness = {}
     for n in nodes:
@@ -229,7 +229,7 @@ def onion_decomposition(G):
         layer+=1;
         if len(D)>0:
             if np.min(D.values())>=core+1:
-                core = np.min(D.values());
+                core = np.min(list(D.values()));
     return coreness, layerness;
                 
                 
