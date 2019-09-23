@@ -186,7 +186,7 @@ def memory_temporal_graph_creation(N,T,k,act,mode,alpha=1,returnhist=False,verbo
 
 def aggregate_graph(TG,T=None):
     if T==None:
-        T = range(np.max(TG.keys()));
+        T = range(np.max(list(TG.keys())));
     w = {}
     for t in range(T):
         edges = TG[t].edges();
@@ -196,8 +196,8 @@ def aggregate_graph(TG,T=None):
             w[edge]+=1;
     G = nx.Graph();
     G.add_nodes_from(TG[0].nodes())
-    G.add_edges_from(w.keys());
-    nx.set_edge_attributes(G,'weight',w);
+    G.add_edges_from(list(w.keys()));
+    nx.set_edge_attributes(G,w,'weight');
     return G;
 
 
