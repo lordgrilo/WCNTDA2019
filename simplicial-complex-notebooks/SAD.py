@@ -116,15 +116,15 @@ def memoryless_instant_graph(vertex_dict,k,mode):
         vv = map(lambda x: int(np.max([2, x])), dis.rvs(size=len(vertex_dict)));     
         kk = dict(zip(vertex_dict.keys(),vv))
     elif len(k)==len(vertex_dict):
-        kk = dict(zip(vertex_dict.keys(),k))
+        kk = dict(zip(list(vertex_dict.keys()),k))
         
     if mode=='simplicial':
         tgraph = nx.Graph()
-        tgraph.add_nodes_from(vertex_dict.keys());
+        tgraph.add_nodes_from(list(vertex_dict.keys()));
         new_history = []
         for n in vertex_dict:
             if np.random.rand()<=vertex_dict[n].act:
-                nodes = vertex_dict.keys();
+                nodes = list(vertex_dict.keys());
                 nodes.remove(n)
                 e = vertex_dict[n].new_collab(nodes,kk[n]);
                 new_history.append(e);
@@ -136,11 +136,11 @@ def memoryless_instant_graph(vertex_dict,k,mode):
         for n in vertex_dict:
             m[n] = kk[n]*(kk[n]-1)/2;
         tgraph = nx.Graph()
-        tgraph.add_nodes_from(vertex_dict.keys());
+        tgraph.add_nodes_from(list(vertex_dict.keys()));
         new_history = []
         for n in vertex_dict:
             if np.random.rand()<=vertex_dict[n].act:
-                nodes = vertex_dict.keys();
+                nodes = list(vertex_dict.keys());
                 nodes.remove(n)
                 neigh = random.sample(nodes,m[n]);
                 for nn in neigh:
