@@ -157,7 +157,7 @@ def temporal_graph_creation(N,T,k,act,mode,returnhist=False,verbose=False):
         vertex_dict[n] = simplex_vertex(n,act[n])
     for t in range(T):
         if verbose == True and T%100==0:
-            print T;
+            print(T);
         tg, fh = memoryless_instant_graph(vertex_dict,k,mode);
         tgraph[t] = tg;
         history[t] = fh;
@@ -174,7 +174,7 @@ def memory_temporal_graph_creation(N,T,k,act,mode,alpha=1,returnhist=False,verbo
         vertex_dict[n] = simplex_vertex(n,act[n])
     for t in range(T):
         if verbose == True and T%100==0:
-            print T;
+            prin(T);
         tg, fh = memory_instant_graph(vertex_dict,k,mode=mode,alpha=alpha);
         tgraph[t] = tg;
         history[t] = fh
