@@ -228,7 +228,7 @@ def onion_decomposition(G):
             del D[n];
         layer+=1;
         if len(D)>0:
-            if np.min(D.values())>=core+1:
+            if np.min(list(D.values()))>=core+1:
                 core = np.min(list(D.values()));
     return coreness, layerness;
                 
