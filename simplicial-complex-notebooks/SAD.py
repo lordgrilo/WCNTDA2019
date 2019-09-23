@@ -208,7 +208,7 @@ def onion_decomposition(G):
     neigh = {}
     for n in list(G.nodes()):
         neigh[n] = G.neighbors(n);
-    nodes = G.nodes();
+    nodes = list(G.nodes());
     D = dict(G.degree());
     coreness = {}
     layerness = {}
